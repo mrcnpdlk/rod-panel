@@ -1,0 +1,52 @@
+{
+  "name": "mrcnpdlk/rod-panel",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Marcin Pudełek",
+      "email": "mpudelek@widzew.net",
+      "role": "Developer"
+    }
+  ],
+  "description": "ROD Panel",
+  "type": "library",
+  "time": "2020-09-27",
+  "keywords": [
+    "rod",
+    "pzd"
+  ],
+  "config": {
+    "optimize-autoloader": true
+  },
+  "require": {
+    "php": ">=7.2",
+    "ext-pdo": "*",
+    "mrcnpdlk/pixie": "^5",
+    "mrcnpdlk/lib-exception": "^0"
+  },
+  "require-dev": {
+    "phpunit/php-code-coverage": "^7",
+    "friendsofphp/php-cs-fixer": "^2",
+    "phpstan/phpstan": "^0",
+    "phpstan/phpstan-phpunit": "^0",
+    "jangregor/phpstan-prophecy": "^0",
+    "phpunit/phpunit": "^8"
+  },
+  "minimum-stability": "stable",
+  "prefer-stable": true,
+  "autoload": {
+    "psr-4": {
+      "Mrcnpdlk\\ROD\\Panel\\": "src/"
+    }
+  },
+  "scripts": {
+    "test": [
+      "@phpstan",
+      "@lint"
+    ],
+    "phpstan": "phpstan analyse --memory-limit=2G --error-format=table",
+    "fixer": "php-cs-fixer fix --diff --show-progress=dots",
+    "lint": "php-cs-fixer fix --diff --dry-run"
+  }
+}
+
