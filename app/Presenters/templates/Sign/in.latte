@@ -1,0 +1,27 @@
+{block content}
+<h1 n:block=title>Sign in</h1>
+
+<div class="row">
+    {form signInForm}
+        <div class="col s12">
+            <div class="row">
+                <div class="input-field col s12">
+                    <input name="username" type="text" class="validate">
+                    <label for="username">Nazwa użytkownika</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input name="password" type="text" class="validate">
+                    <label for="password">Hasło</label>
+                </div>
+            </div>
+            <p><input n:name=send class="btn btn-default">
+        </div>
+    {/form}
+</div>
+
+<!-- Simple errors rendering -->
+<ul class="errors" n:if="$form->hasErrors()">
+    <li n:foreach="$form->errors as $error">{$error}</li>
+</ul>
