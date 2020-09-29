@@ -1,27 +1,36 @@
 {block content}
-<h1 n:block=title>Sign in</h1>
 
-<div class="row">
-    {form signInForm}
-        <div class="col s12">
-            <div class="row">
-                <div class="input-field col s12">
-                    <input name="username" type="text" class="validate">
-                    <label for="username">Nazwa użytkownika</label>
+
+<div class="container">
+
+
+    <div class="row">
+        <div class="col s6 offset-s3">
+            <h1 n:block=title>Logowanie</h1>
+
+            <form n:name="signInForm" novalidate>
+                <ul n:if="!empty($form->ownErrors)">
+                    <li n:foreach="$form->ownErrors as $error">{$error}</li>
+                </ul>
+                <div class="form-field">
+                    <label n:name="username">Nazwa użytkownika</label>
+                    <input n:name="username" n:class="empty($form->components['username']->errors) ? 'input' : 'input input--invalid'">
+                    <div class="form-field__error" n:if="!empty($form->components['username']->errors)">
+                        {$form->components['username']->errors[0]}
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <input name="password" type="text" class="validate">
-                    <label for="password">Hasło</label>
+                <div class="form-field">
+                    <label n:name="password">Hasło</label>
+                    <input n:name="password" n:class="empty($form->components['password']->errors) ? 'input' : 'input input--invalid'">
+                    <div class="form-field__error" n:if="!empty($form->components['password']->errors)">
+                        {$form->components['password']->errors[0]}
+                    </div>
                 </div>
-            </div>
-            <p><input n:name=send class="btn btn-default">
+                <button n:name=send class="btn waves-effect waves-light" type="submit">Submit
+                    <i class="material-icons right">send</i>
+                </button>
+            </form>
         </div>
-    {/form}
+    </div>
 </div>
 
-<!-- Simple errors rendering -->
-<ul class="errors" n:if="$form->hasErrors()">
-    <li n:foreach="$form->errors as $error">{$error}</li>
-</ul>

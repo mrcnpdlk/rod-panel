@@ -43,6 +43,7 @@
     "friendsofphp/php-cs-fixer": "^2",
     "phpstan/phpstan": "^0",
     "phpstan/phpstan-phpunit": "^0",
+    "phpstan/phpstan-nette": "^0",
     "jangregor/phpstan-prophecy": "^0",
     "phpunit/phpunit": "^8",
     "nette/tester": "^2.0",
@@ -62,8 +63,7 @@
     ],
     "phpstan": "phpstan analyse --memory-limit=2G --error-format=table",
     "fixer": "php-cs-fixer fix --diff --show-progress=dots",
-    "lint": "php-cs-fixer fix --diff --dry-run",
-    "server": "php -S localhost:4200 -t www"
+    "lint": "php-cs-fixer fix --diff --dry-run"
   }
 }
 
