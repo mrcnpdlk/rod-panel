@@ -20,6 +20,7 @@
   },
   "require": {
     "php": ">=7.2",
+    "ext-json": "*",
     "ext-pdo": "*",
     "nette/application": "^3.0",
     "nette/bootstrap": "^3.0",
@@ -36,7 +37,8 @@
     "latte/latte": "^2.5",
     "tracy/tracy": "^2.6",
     "mrcnpdlk/pixie": "^5",
-    "mrcnpdlk/lib-exception": "^0"
+    "mrcnpdlk/lib-exception": "^0",
+    "json-mapper/json-mapper": "^1"
   },
   "require-dev": {
     "phpunit/php-code-coverage": "^7",

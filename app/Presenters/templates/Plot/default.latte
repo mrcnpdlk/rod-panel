@@ -1,0 +1,24 @@
+{* This is the welcome page, you can delete it *}
+
+{block content}
+
+<div class="container">
+    <div class="row">
+        <table>
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Numer działki</th>
+                <th>Powierzchnia</th>
+            </tr>
+            </thead>
+            {foreach $tElements as $item}
+                <tr>
+                    <td>{$item->id}</td>
+                    <td>{$item->nr}</td>
+                    <td>{$item->area|number:3}</td>
+                </tr>
+            {/foreach}
+        </table>
+    </div>
+</div>

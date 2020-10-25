@@ -7,7 +7,7 @@ namespace Mrcnpdlk\ROD\App\Presenters;
 use Nette;
 use Nette\Application\UI\Form;
 
-final class SignPresenter extends Nette\Application\UI\Presenter
+final class SignPresenter extends BasePresenterAbstract
 {
     protected function createComponentSignInForm(): Form
     {

@@ -1,25 +1,21 @@
 parameters:
 
-
 application:
 	errorPresenter: Error
 	mapping:
 		*: Mrcnpdlk\ROD\App\*Module\Presenters\*Presenter
 
-
 session:
 	expiration: 14 days
-
 
 di:
 	export:
 		parameters: no
 		tags: no
 
-
 services:
-    - Mrcnpdlk\ROD\App\Services\FirebirdService(%firebird%)
     router: Mrcnpdlk\ROD\App\Router\RouterFactory::createRouter
-    firebird:
-        factory: PDO
-        arguments: [%firebird.dsn%, %firebird.user%, %firebird.password%]
+    dbMain: Nette\Database\Connection(%sqlite.dsn%)
+    - Mrcnpdlk\ROD\App\Services\MapperService()
+    - Mrcnpdlk\ROD\App\Model\PlotManager()
+

@@ -1,7 +1,8 @@
 parameters:
-	level: 5
+	level: 6
 	paths:
 		- app
+		- www
 	fileExtensions:
 		- php
 	bootstrapFiles:
@@ -11,8 +12,6 @@ parameters:
 		jobSize: 20
 		maximumNumberOfProcesses: 32
 		minimumNumberOfJobsPerProcess: 4
+	checkMissingIterableValueType: false
 includes:
-	- vendor/phpstan/phpstan-phpunit/extension.neon
-	- vendor/phpstan/phpstan-phpunit/rules.neon
 	- vendor/phpstan/phpstan-nette/extension.neon
-	- vendor/jangregor/phpstan-prophecy/extension.neon

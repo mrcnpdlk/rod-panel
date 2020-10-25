@@ -20,9 +20,10 @@
 		<ul id="nav-mobile" class="right hide-on-med-and-down">
             <li><a n:href="Homepage:">Homepage</a></li>
             {if $user->loggedIn}
-                <li><a n:href="Sign:out">Sign out</a></li>
+                <li><a n:href="Plot:default">Działki</a></li>
+                <li><a n:href="Sign:out">Wyloguj</a></li>
             {else}
-                <li><a n:href="Sign:in">Sign in</a></li>
+                <li><a n:href="Sign:in">Zaloguj</a></li>
             {/if}
         </ul>
     </div>
