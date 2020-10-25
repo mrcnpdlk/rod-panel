@@ -18,4 +18,8 @@ di:
 
 
 services:
-	router: Mrcnpdlk\ROD\App\Router\RouterFactory::createRouter
+    - Mrcnpdlk\ROD\App\Services\FirebirdService(%firebird%)
+    router: Mrcnpdlk\ROD\App\Router\RouterFactory::createRouter
+    firebird:
+        factory: PDO
+        arguments: [%firebird.dsn%, %firebird.user%, %firebird.password%]

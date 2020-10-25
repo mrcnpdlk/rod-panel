@@ -7,7 +7,6 @@ namespace Mrcnpdlk\ROD\App\Presenters;
 use Nette;
 use Nette\Application\UI\Form;
 
-
 final class SignPresenter extends Nette\Application\UI\Presenter
 {
     protected function createComponentSignInForm(): Form
@@ -33,7 +32,6 @@ final class SignPresenter extends Nette\Application\UI\Presenter
         try {
             $this->getUser()->login($values->username, $values->password);
             $this->redirect('Homepage:');
-
         } catch (Nette\Security\AuthenticationException $e) {
             $form->addError('Incorrect username or password.');
         }

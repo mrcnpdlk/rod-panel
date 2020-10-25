@@ -6,26 +6,25 @@ namespace Mrcnpdlk\ROD\App;
 
 use Nette\Configurator;
 
-
 class Bootstrap
 {
-	public static function boot(): Configurator
-	{
-		$configurator = new Configurator;
+    public static function boot(): Configurator
+    {
+        $configurator = new Configurator();
 
-		$configurator->setDebugMode(true); // enable for your remote IP
-		$configurator->enableTracy(__DIR__ . '/../log');
+        $configurator->setDebugMode(true); // enable for your remote IP
+        $configurator->enableTracy(__DIR__ . '/../log');
 
-		$configurator->setTimeZone('Europe/Warsaw');
-		$configurator->setTempDirectory(__DIR__ . '/../temp');
+        $configurator->setTimeZone('Europe/Warsaw');
+        $configurator->setTempDirectory(__DIR__ . '/../temp');
 
-		$configurator->createRobotLoader()
-			->addDirectory(__DIR__)
-			->register();
+        $configurator->createRobotLoader()
+            ->addDirectory(__DIR__)
+            ->register();
 
-		$configurator->addConfig(__DIR__ . '/config/common.neon');
-		$configurator->addConfig(__DIR__ . '/config/local.neon');
+        $configurator->addConfig(__DIR__ . '/config/common.neon');
+        $configurator->addConfig(__DIR__ . '/config/local.neon');
 
-		return $configurator;
-	}
+        return $configurator;
+    }
 }
