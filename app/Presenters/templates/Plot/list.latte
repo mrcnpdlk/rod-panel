@@ -11,13 +11,15 @@
                 <th class="center-align">ID</th>
                 <th class="center-align">Numer działki</th>
                 <th>Powierzchnia</th>
+                <th></th>
             </tr>
             </thead>
             {foreach $tElements as $item}
                 <tr>
                     <td class="center-align">{$item->id}</td>
-                    <td class="center-align">{$item->nr}</td>
-                    <td>{$item->area|number:3}</td>
+                    <td class="center-align">{$item->numer}</td>
+                    <td>{$item->powierzchnia|number:3}</td>
+                    <td><a class="waves-effect waves-light btn" n:href="edit $item->id">Info</a></td>
                 </tr>
             {/foreach}
         </table>

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Mrcnpdlk\ROD\App\Presenters;
 
 use Mrcnpdlk\ROD\App\Model\PlotManager;
+use Nette\Forms\Form;
 use Tracy\Debugger;
 
 /**
@@ -36,7 +37,7 @@ final class PlotPresenter extends BasePresenterAbstract
 
     public function renderDefault(): void
     {
-        $this->template->add('stats', $this->plotMgr->getTable()->select('SUM(area) AS areaSum , COUNT(*) AS plotsCount')->fetch());
+        $this->template->add('stats', $this->plotMgr->getTable()->select('SUM(powierzchnia) AS powierzchnia , COUNT(*) AS ilosc')->fetch());
     }
 
     public function renderList(): void
@@ -44,5 +45,14 @@ final class PlotPresenter extends BasePresenterAbstract
         $tList = $this->plotMgr->getAll();
         //Debugger::barDump($tList);
         $this->template->add('tElements', $tList);
+    }
+
+    public function actionEdit(int $plotId): void
+    {
+        $post = $this->plotMgr->getById($plotId);
+        if (!$post) {
+            $this->error('Post not found');
+        }
+        //$this['postForm']->setDefaults($post->toArray());
     }
 }

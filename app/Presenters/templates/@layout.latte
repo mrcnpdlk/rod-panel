@@ -2,42 +2,44 @@
 <html>
 <head>
     <meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>{ifset title}{include title|stripHtml} | {/ifset}Rod Panel</title>
 
-	<!-- CSS  -->
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- CSS  -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <link rel="stylesheet" href="{$basePath}/main.css">
 </head>
 
 <main class="page-body">
-<nav role="navigation">
-    <div class="nav-wrapper container">
-        <a href="#" class="brand-logo"><i class="large material-icons">insert_chart</i>Logo</a>
-		<a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+    <nav role="navigation">
+        <div class="nav-wrapper container">
+            <a href="#" class="brand-logo"><i class="large material-icons">insert_chart</i>Logo</a>
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
 
-		<ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><a n:href="Homepage:">Homepage</a></li>
-            {if $user->loggedIn}
-                <li><a n:href="Plot:default">Działki</a></li>
-                <li><a n:href="Sign:out">Wyloguj</a></li>
-            {else}
-                <li><a n:href="Sign:in">Zaloguj</a></li>
-            {/if}
-        </ul>
-    </div>
-</nav>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a n:href="Homepage:">Homepage</a></li>
+                {if $user->loggedIn}
+                    <li><a n:href="Plot:default">Działki</a></li>
+                    <li><a n:href="Sign:out">Wyloguj</a></li>
+                {else}
+                    <li><a n:href="Sign:in">Zaloguj</a></li>
+                {/if}
+            </ul>
+        </div>
+    </nav>
 
-<div n:foreach="$flashes as $flash" n:class="flash, $flash->type">{$flash->message}</div>
+    <div n:foreach="$flashes as $flash" n:class="flash, $flash->type">{$flash->message}</div>
 
-{include content}
+    {include content}
 
 {block scripts}
-    <script type="text/javascript" src="https://nette.github.io/resources/js/3/netteForms.min.js"></script>
-    <script type="text/javascript" src="{$basePath}/main.js"></script>
-{/block}
+        <script type="text/javascript" src="https://nette.github.io/resources/js/3/netteForms.min.js"></script>
+        <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+        <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+        <script type="text/javascript" src="{$basePath}/main.js"></script>
+    {/block}
 
 </main>
 
