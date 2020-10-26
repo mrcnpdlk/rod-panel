@@ -3,22 +3,20 @@
 {block content}
 
 <div class="container">
+    <h3>Podsumowanie</h3>
     <div class="row">
-        <table>
-            <thead>
+        <table class="striped responsive-table">
             <tr>
-                <th>ID</th>
-                <th>Numer działki</th>
-                <th>Powierzchnia</th>
+                <td class="center-align">Liczba działek</td>
+                <td class="center-align">{$stats['plotsCount']}</td>
+                <td>
+                    <a class="waves-effect waves-light btn" n:href="Plot:list">Lista</a>
+                </td>
             </tr>
-            </thead>
-            {foreach $tElements as $item}
-                <tr>
-                    <td>{$item->id}</td>
-                    <td>{$item->nr}</td>
-                    <td>{$item->area|number:3}</td>
-                </tr>
-            {/foreach}
+            <tr>
+                <td class="center-align">Powierzchnia działek</td>
+                <td class="center-align">{$stats['areaSum']|number:3}</td>
+            </tr>
         </table>
     </div>
 </div>

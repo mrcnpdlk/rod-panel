@@ -1,0 +1,25 @@
+{* This is the welcome page, you can delete it *}
+
+{block content}
+
+<div class="container">
+    <h3>Lista działek</h3>
+    <div class="row">
+        <table class="striped responsive-table">
+            <thead>
+            <tr>
+                <th class="center-align">ID</th>
+                <th class="center-align">Numer działki</th>
+                <th>Powierzchnia</th>
+            </tr>
+            </thead>
+            {foreach $tElements as $item}
+                <tr>
+                    <td class="center-align">{$item->id}</td>
+                    <td class="center-align">{$item->nr}</td>
+                    <td>{$item->area|number:3}</td>
+                </tr>
+            {/foreach}
+        </table>
+    </div>
+</div>

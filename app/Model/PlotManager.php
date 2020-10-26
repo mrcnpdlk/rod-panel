@@ -8,6 +8,7 @@
 namespace Mrcnpdlk\ROD\App\Model;
 
 use Nette\Database\Context;
+use Nette\Database\Table\Selection;
 use Nette\SmartObject;
 use Tracy\Debugger;
 
@@ -29,12 +30,18 @@ class PlotManager
     }
 
     /**
-     * @return array
+     * @return \Nette\Database\Table\Selection
      */
-    public function getAll()
+    public function getTable(): Selection
     {
-        $res = $this->database->table('plots')->fetchAll();
+        return $this->database->table('plots');
+    }
 
-        return $res;
+    /**
+     * @return object[]
+     */
+    public function getAll(): array
+    {
+        return $this->database->table('plots')->fetchAll();
     }
 }

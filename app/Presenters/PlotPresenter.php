@@ -36,8 +36,13 @@ final class PlotPresenter extends BasePresenterAbstract
 
     public function renderDefault(): void
     {
+        $this->template->add('stats', $this->plotMgr->getTable()->select('SUM(area) AS areaSum , COUNT(*) AS plotsCount')->fetch());
+    }
+
+    public function renderList(): void
+    {
         $tList = $this->plotMgr->getAll();
-        Debugger::barDump($tList);
+        //Debugger::barDump($tList);
         $this->template->add('tElements', $tList);
     }
 }

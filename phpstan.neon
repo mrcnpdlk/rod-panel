@@ -13,5 +13,7 @@ parameters:
 		maximumNumberOfProcesses: 32
 		minimumNumberOfJobsPerProcess: 4
 	checkMissingIterableValueType: false
+	ignoreErrors:
+		- '#Cannot call method add\(\) on Nette\\Application\\UI\\ITemplate\|stdClass#'
 includes:
 	- vendor/phpstan/phpstan-nette/extension.neon

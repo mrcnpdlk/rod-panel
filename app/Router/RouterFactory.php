@@ -17,6 +17,7 @@ final class RouterFactory
         $router->addRoute('<presenter>/<action>', 'Homepage:default');
         $router->addRoute('sign/in', 'Sign:in');
         $router->addRoute('plot', 'Plot:default');
+        $router->addRoute('plot/list', 'Plot:list');
 
         return $router;
     }
