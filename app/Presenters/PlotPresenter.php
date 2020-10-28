@@ -25,19 +25,11 @@ final class PlotPresenter extends BasePresenterAbstract
     }
 
     /**
-     * @param int $plotId
+     * @param \Nette\Forms\Form $form
+     * @param array             $values
      *
-     * @throws \Nette\Application\BadRequestException
+     * @throws \Nette\Application\AbortException
      */
-    public function actionEdit(int $plotId): void
-    {
-        $plot = $this->plotMgr->getById($plotId);
-        if (!$plot) {
-            $this->error('Post not found');
-        }
-        $this['editPlotForm']->setDefaults($plot->toArray());
-    }
-
     public function editPlotSucceeded(Form $form, array $values): void
     {
         Debugger::barDump($values);
@@ -48,6 +40,20 @@ final class PlotPresenter extends BasePresenterAbstract
     public function renderDefault(): void
     {
         $this->template->add('stats', $this->plotMgr->getTable()->select('SUM(powierzchnia) AS powierzchnia , COUNT(*) AS ilosc')->fetch());
+    }
+
+    /**
+     * @param int $id
+     *
+     * @throws \Nette\Application\BadRequestException
+     */
+    public function renderEdit(int $id): void
+    {
+        $plot = $this->plotMgr->getById($id);
+        if (!$plot) {
+            $this->error('Post not found');
+        }
+        $this['editPlotForm']->setDefaults($plot->toArray());
     }
 
     public function renderList(): void
