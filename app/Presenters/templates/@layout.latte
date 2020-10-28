@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="pl">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -7,12 +7,10 @@
 
     <!-- CSS  -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <link rel="stylesheet" href="{$basePath}/main.css">
 </head>
 
-<main class="page-body">
+<body class="page-body">
     <nav role="navigation">
         <div class="nav-wrapper container">
             <a href="#" class="brand-logo"><i class="large material-icons">insert_chart</i>Logo</a>
@@ -34,22 +32,20 @@
 
     {include content}
 
-{block scripts}
+    {block scripts}
         <script type="text/javascript" src="https://nette.github.io/resources/js/3/netteForms.min.js"></script>
         <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
         <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
         <script type="text/javascript" src="{$basePath}/main.js"></script>
     {/block}
 
-</main>
-
-<footer class="page-footer">
-    <div class="footer-copyright">
-        <div class="container">
-            © 2020 mrcnpdlk
-            <a class="grey-text text-lighten-4 right" target="_blank" href="https://rodkopanka.pl">ROD Kopanka</a>
+    <footer class="page-footer">
+        <div class="footer-copyright">
+            <div class="container">
+                © 2020 mrcnpdlk
+                <a class="grey-text text-lighten-4 right" target="_blank" href="https://rodkopanka.pl">ROD Kopanka</a>
+            </div>
         </div>
-    </div>
-</footer>
-
+    </footer>
+</body>
 </html>

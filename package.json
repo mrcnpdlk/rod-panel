@@ -1,0 +1,27 @@
+{
+  "name": "rod-panel",
+  "license": "UNLICENSED",
+  "private": true,
+  "scripts": {
+    "watch": "webpack --watch",
+    "build": "webpack"
+  },
+  "devDependencies": {
+    "@types/materialize-css": "^1.0.8",
+    "@typescript-eslint/eslint-plugin": "^4.6.0",
+    "@typescript-eslint/parser": "^4.6.0",
+    "css-loader": "^5.0.0",
+    "eslint": "^7.12.1",
+    "mini-css-extract-plugin": "^1.2.1",
+    "sass": "^1.27.0",
+    "sass-loader": "^10.0.4",
+    "ts-loader": "^8.0.7",
+    "tslint": "^6.1.3",
+    "typescript": "^4.0.5",
+    "webpack": "^5.3.0",
+    "webpack-cli": "^4.1.0"
+  },
+  "dependencies": {
+    "materialize-css": "^1.0.0-rc.2"
+  }
+}
