@@ -13,6 +13,15 @@ di:
 		parameters: no
 		tags: no
 
+database:
+	dsn: 'sqlite:./../db/demo.sqlite3'
+	options:
+		lazy: yes
+
+security:
+	users:
+		admin: secret  # user 'admin', password 'secret'
+
 services:
     router: Mrcnpdlk\ROD\App\Router\RouterFactory::createRouter
     dbMain: Nette\Database\Connection(%sqlite.dsn%)

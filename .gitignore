@@ -4,6 +4,7 @@ vendor
 devel
 app/config/local.neon
 .php_cs.cache
+db/*.sqlite3-journal
 
 ### Windows template
 # Windows thumbnail cache files

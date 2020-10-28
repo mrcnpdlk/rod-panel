@@ -25,14 +25,24 @@ final class PlotPresenter extends BasePresenterAbstract
     }
 
     /**
-     * Tylko dla zalogowanych
+     * @param int $plotId
+     *
+     * @throws \Nette\Application\BadRequestException
      */
-    protected function startup(): void
+    public function actionEdit(int $plotId): void
     {
-        parent::startup();
-        if (!$this->getUser()->isLoggedIn()) {
-            $this->redirect('Sign:in');
+        $plot = $this->plotMgr->getById($plotId);
+        if (!$plot) {
+            $this->error('Post not found');
         }
+        $this['editPlotForm']->setDefaults($plot->toArray());
+    }
+
+    public function editPlotSucceeded(Form $form, array $values): void
+    {
+        Debugger::barDump($values);
+        $this->flashMessage('Post was published', 'success');
+        $this->redirect('list');
     }
 
     public function renderDefault(): void
@@ -47,12 +57,35 @@ final class PlotPresenter extends BasePresenterAbstract
         $this->template->add('tElements', $tList);
     }
 
-    public function actionEdit(int $plotId): void
+    protected function createComponentEditPlotForm(): Form
     {
-        $post = $this->plotMgr->getById($plotId);
-        if (!$post) {
-            $this->error('Post not found');
+        $form = new Form();
+        $form->addText('id')
+             ->setRequired()
+        ;
+        $form->addText('numer')
+             ->setRequired('Wprowadź numer działki')
+        ;
+        $form->addText('powierzchnia')
+             ->setRequired('Wprowadź powierzchnię')
+        ;
+
+        $form->addSubmit('send', 'Sign in');
+        $form->onValidate[] = [$this, 'editPlotSucceeded'];
+
+        return $form;
+    }
+
+    /**
+     * Tylko dla zalogowanych
+     *
+     * @throws \Nette\Application\AbortException
+     */
+    protected function startup(): void
+    {
+        parent::startup();
+        if (!$this->getUser()->isLoggedIn()) {
+            $this->redirect('Sign:in');
         }
-        //$this['postForm']->setDefaults($post->toArray());
     }
 }
