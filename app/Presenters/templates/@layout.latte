@@ -28,16 +28,10 @@
         </div>
     </nav>
 
-    <div n:foreach="$flashes as $flash" n:class="flash, $flash->type">{$flash->message}</div>
-
-    {include content}
-
-    {block scripts}
-        <script type="text/javascript" src="https://nette.github.io/resources/js/3/netteForms.min.js"></script>
-        <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
-        <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
-        <script type="text/javascript" src="{$basePath}/main.js"></script>
-    {/block}
+    <main>
+        <div n:foreach="$flashes as $flash" n:class="flash, $flash->type">{$flash->message}</div>
+        {include content}
+    </main>
 
     <footer class="page-footer">
         <div class="footer-copyright">
@@ -47,5 +41,12 @@
             </div>
         </div>
     </footer>
+
+    {block scripts}
+        <script type="text/javascript" src="https://nette.github.io/resources/js/3/netteForms.min.js"></script>
+        <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+        <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+        <script type="text/javascript" src="{$basePath}/main.js"></script>
+    {/block}
 </body>
 </html>
