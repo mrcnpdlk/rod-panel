@@ -1,0 +1,38 @@
+{block content}
+<h1>Edit post</h1>
+
+<div class="container">
+    <div class="row">
+        <div class="col s6 offset-s3">
+            <form n:name="editPlotForm" novalidate>
+                <ul n:if="!empty($form->ownErrors)">
+                    <li n:foreach="$form->ownErrors as $error">{$error}</li>
+                </ul>
+                <div class="form-field">
+                    <label n:name="id">ID</label>
+                    <input n:name="id" n:class="empty($form->components['id']->errors) ? 'input' : 'input input--invalid'" readonly>
+                    <div class="form-field__error" n:if="!empty($form->components['id']->errors)">
+                        {$form->components['id']->errors[0]}
+                    </div>
+                </div>
+                <div class="form-field">
+                    <label n:name="numer">Numer działki</label>
+                    <input n:name="numer" n:class="empty($form->components['numer']->errors) ? 'input' : 'input input--invalid'">
+                    <div class="form-field__error" n:if="!empty($form->components['numer']->errors)">
+                        {$form->components['numer']->errors[0]}
+                    </div>
+                </div>
+                <div class="form-field">
+                    <label n:name="powierzchnia">Powierzchnia [m<sup>2</sup>]</label>
+                    <input n:name="powierzchnia" n:class="empty($form->components['powierzchnia']->errors) ? 'input' : 'input input--invalid'" type="number">
+                    <div class="form-field__error" n:if="!empty($form->components['powierzchnia']->errors)">
+                        {$form->components['powierzchnia']->errors[0]}
+                    </div>
+                </div>
+                <button n:name=send class="btn waves-effect waves-light" type="submit">Submit
+                    <i class="material-icons right">send</i>
+                </button>
+            </form>
+        </div>
+    </div>
+</div>

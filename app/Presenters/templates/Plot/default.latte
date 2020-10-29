@@ -1,0 +1,22 @@
+{* This is the welcome page, you can delete it *}
+
+{block content}
+
+<div class="container">
+    <h3>Podsumowanie</h3>
+    <div class="row">
+        <table class="striped responsive-table">
+            <tr>
+                <td class="center-align">Liczba działek</td>
+                <td class="center-align">{$stats['ilosc']}</td>
+                <td>
+                    <a class="waves-effect waves-light btn" n:href="Plot:list">Lista</a>
+                </td>
+            </tr>
+            <tr>
+                <td class="center-align">Powierzchnia działek</td>
+                <td class="center-align">{$stats['powierzchnia']|number:3}</td>
+            </tr>
+        </table>
+    </div>
+</div>

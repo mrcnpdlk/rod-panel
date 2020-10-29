@@ -17,7 +17,7 @@ class FirebirdService
      */
     private $pdo;
 
-    public function __construct($params)
+    public function __construct(array $params)
     {
         $this->pdo = new \PDO($params['dsn'], $params['user'], $params['password'], [\PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION]);
     }

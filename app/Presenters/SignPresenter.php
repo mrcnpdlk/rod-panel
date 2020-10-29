@@ -7,7 +7,7 @@ namespace Mrcnpdlk\ROD\App\Presenters;
 use Nette;
 use Nette\Application\UI\Form;
 
-final class SignPresenter extends Nette\Application\UI\Presenter
+final class SignPresenter extends BasePresenterAbstract
 {
     protected function createComponentSignInForm(): Form
     {
@@ -27,6 +27,12 @@ final class SignPresenter extends Nette\Application\UI\Presenter
         return $form;
     }
 
+    /**
+     * @param \Nette\Application\UI\Form $form
+     * @param \stdClass                  $values
+     *
+     * @throws \Nette\Application\AbortException
+     */
     public function signInFormSucceeded(Form $form, \stdClass $values): void
     {
         try {
@@ -37,10 +43,12 @@ final class SignPresenter extends Nette\Application\UI\Presenter
         }
     }
 
+    /**
+     * @throws \Nette\Application\AbortException
+     */
     public function actionOut(): void
     {
         $this->getUser()->logout();
-        $this->flashMessage('You have been signed out.');
-        $this->redirect('Homepage:');
+        $this->redirect('Sign:in');
     }
 }
