@@ -14,17 +14,17 @@ di:
 		tags: no
 
 database:
-	dsn: 'sqlite:./../db/demo.sqlite3'
-	options:
-		lazy: yes
+    local:
+        dsn: 'sqlite:./../db/demo.sqlite3'
+        options:
+            lazy: yes
 
 security:
 	users:
-		admin: secret  # user 'admin', password 'secret'
+		admin: admin
 
 services:
     router: Mrcnpdlk\ROD\App\Router\RouterFactory::createRouter
-    dbMain: Nette\Database\Connection(%sqlite.dsn%)
     - Mrcnpdlk\ROD\App\Services\MapperService()
-    - Mrcnpdlk\ROD\App\Model\PlotManager()
+    - Mrcnpdlk\ROD\App\Model\PlotManager(@database.local.context)
 
