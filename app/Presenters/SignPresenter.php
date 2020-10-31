@@ -4,51 +4,59 @@ declare(strict_types=1);
 
 namespace Mrcnpdlk\ROD\App\Presenters;
 
+use Mrcnpdlk\ROD\App\Model\SignInFormModel;
 use Nette;
+use Nette\Application\AbortException;
 use Nette\Application\UI\Form;
 
 final class SignPresenter extends BasePresenterAbstract
 {
-    protected function createComponentSignInForm(): Form
+    /**
+     * @throws AbortException
+     */
+    public function renderIn(): void
     {
-        $form = new Form();
-        $form->addText('username', 'Username:')
-             ->setRequired('Please enter your username.')
-        ;
-
-        $form->addPassword('password', 'Password:')
-             ->setRequired('Please enter your password.')
-        ;
-
-        $form->addSubmit('send', 'Sign in');
-
-        $form->onSuccess[] = [$this, 'signInFormSucceeded'];
-
-        return $form;
+        if ($this->getUser()->isLoggedIn()) {
+            $this->redirect('Home:');
+        }
     }
 
     /**
-     * @param \Nette\Application\UI\Form $form
-     * @param \stdClass                  $values
-     *
-     * @throws \Nette\Application\AbortException
+     * @throws AbortException
      */
-    public function signInFormSucceeded(Form $form, \stdClass $values): void
+    public function renderOut(): void
+    {
+        $this->getUser()->logout();
+        $this->redirect('Sign:in');
+    }
+
+    /**
+     * @param Form $form
+     * @param SignInFormModel $values
+     *
+     * @throws AbortException
+     */
+    public function signInFormSucceeded(Form $form, SignInFormModel $values): void
     {
         try {
             $this->getUser()->login($values->username, $values->password);
-            $this->redirect('Homepage:');
+            $this->redirect('Home:');
         } catch (Nette\Security\AuthenticationException $e) {
             $form->addError('Incorrect username or password.');
         }
     }
 
-    /**
-     * @throws \Nette\Application\AbortException
-     */
-    public function actionOut(): void
+    protected function createComponentSignInForm(): Form
     {
-        $this->getUser()->logout();
-        $this->redirect('Sign:in');
+        $form = new Form();
+        $form->addText('username')
+            ->setRequired('Pole jest wymagane.')
+        ;
+        $form->addPassword('password')
+            ->setRequired('Pole jest wymagane.')
+        ;
+        $form->addSubmit('send');
+        $form->onSuccess[] = [$this, 'signInFormSucceeded'];
+        return $form;
     }
 }

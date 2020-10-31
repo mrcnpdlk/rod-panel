@@ -6,6 +6,6 @@ namespace Mrcnpdlk\ROD\App\Presenters;
 
 use Nette;
 
-final class HomepagePresenter extends BasePresenterAbstract
+final class HomePresenter extends BasePresenterAbstract
 {
 }

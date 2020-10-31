@@ -1,33 +1,46 @@
 {block content}
 
-
-<div class="container">
-    <div class="row">
-        <div class="col s6 offset-s3">
-            <h1 n:block=title>Logowanie</h1>
-
-            <form n:name="signInForm" novalidate>
-                <ul n:if="!empty($form->ownErrors)">
-                    <li n:foreach="$form->ownErrors as $error">{$error}</li>
-                </ul>
-                <div class="form-field">
-                    <label n:name="username">Nazwa użytkownika</label>
-                    <input n:name="username" n:class="empty($form->components['username']->errors) ? 'input' : 'input input--invalid'">
-                    <div class="form-field__error" n:if="!empty($form->components['username']->errors)">
-                        {$form->components['username']->errors[0]}
+<div class="sign-in">
+    <div class="card horizontal">
+        <div class="card-image">
+            <img src="/assets/garden.jpg" alt="">
+        </div>
+        <div class="card-stacked">
+            <div class="card-content">
+                <h1 class="card-title">Logowanie</h1>
+                <form n:name="signInForm" novalidate>
+                    <ul n:if="!empty($form->ownErrors)">
+                        <li n:foreach="$form->ownErrors as $error">{$error}</li>
+                    </ul>
+                    <div class="input-field">
+                        <label n:name="username">Nazwa użytkownika</label>
+                        <input
+                                n:name="username"
+                                n:class="empty($form->components['username']->errors) ? '' : 'invalid'"
+                                autocomplete="username"
+                        >
+                        <span
+                                n:if="!empty($form->components['username']->errors)"
+                                class="helper-text"
+                                data-error="{$form->components['username']->errors[0]}"
+                        ></span>
                     </div>
-                </div>
-                <div class="form-field">
-                    <label n:name="password">Hasło</label>
-                    <input n:name="password" n:class="empty($form->components['password']->errors) ? 'input' : 'input input--invalid'">
-                    <div class="form-field__error" n:if="!empty($form->components['password']->errors)">
-                        {$form->components['password']->errors[0]}
+                    <div class="input-field">
+                        <label n:name="password">Hasło</label>
+                        <input
+                                n:name="password"
+                                n:class="empty($form->components['password']->errors) ? '' : 'invalid'"
+                                autocomplete="current-password"
+                        >
+                        <span
+                                n:if="!empty($form->components['password']->errors)"
+                                class="helper-text"
+                                data-error="{$form->components['password']->errors[0]}"
+                        ></span>
                     </div>
-                </div>
-                <button n:name=send class="btn waves-effect waves-light" type="submit">Submit
-                    <i class="material-icons right">send</i>
-                </button>
-            </form>
+                    <button n:name="send" class="btn waves-effect waves-light">Zaloguj</button>
+                </form>
+            </div>
         </div>
     </div>
 </div>

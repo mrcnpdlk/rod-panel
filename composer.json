@@ -54,9 +54,7 @@
   "minimum-stability": "stable",
   "prefer-stable": true,
   "autoload": {
-    "psr-4": {
-      "Mrcnpdlk\\ROD\\App\\": "app/"
-    }
+    "classmap": ["app/Bootstrap.php"]
   },
   "scripts": {
     "test": [

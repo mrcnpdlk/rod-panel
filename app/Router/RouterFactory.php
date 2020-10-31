@@ -17,10 +17,11 @@ final class RouterFactory
         $router = new RouteList();
 
         $router->addRoute('logowanie', 'Sign:in');
+        $router->addRoute('strona-glowna', 'Home:default');
         $router->addRoute('dzialki', 'Plot:default');
         $router->addRoute('dzialki/lista', 'Plot:list');
         $router->addRoute('dzialka/<id>/edycja', 'Plot:edit');
-        $router->addRoute('<presenter>/<action>[/<id>]', 'Homepage:default');
+        $router->addRoute('<presenter>/<action>[/<id>]', 'Sign:in');
 
         return $router;
     }

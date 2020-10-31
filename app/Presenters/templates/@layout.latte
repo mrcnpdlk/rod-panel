@@ -11,41 +11,36 @@
 </head>
 
 <body class="page-body">
-    <nav role="navigation">
+    <nav n:if="$user->loggedIn" role="navigation">
         <div class="nav-wrapper container">
             <a href="#" class="brand-logo"><i class="large material-icons">insert_chart</i>Logo</a>
-            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger">
+                <i class="material-icons">menu</i>
+            </a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a n:href="Homepage:">Homepage</a></li>
-                {if $user->loggedIn}
-                    <li><a n:href="Plot:default">Działki</a></li>
-                    <li><a n:href="Sign:out">Wyloguj</a></li>
-                {else}
-                    <li><a n:href="Sign:in">Zaloguj</a></li>
-                {/if}
+                <li><a n:href="Home:">Strona Główna</a></li>
+                <li><a n:href="Plot:">Działki</a></li>
+                <li><a n:href="Sign:out">Wyloguj</a></li>
             </ul>
         </div>
     </nav>
 
     <main>
-        <div n:foreach="$flashes as $flash" n:class="flash, $flash->type">{$flash->message}</div>
+{*        <div n:foreach="$flashes as $flash" n:class="flash, $flash->type">{$flash->message}</div>*}
         {include content}
     </main>
 
-    <footer class="page-footer">
-        <div class="footer-copyright">
-            <div class="container">
-                © 2020 mrcnpdlk
-                <a class="grey-text text-lighten-4 right" target="_blank" href="https://rodkopanka.pl">ROD Kopanka</a>
-            </div>
-        </div>
-    </footer>
+{*    <footer class="page-footer">*}
+{*        <div class="footer-copyright">*}
+{*            <div class="container">*}
+{*                © 2020 mrcnpdlk*}
+{*                <a class="grey-text text-lighten-4 right" target="_blank" href="https://rodkopanka.pl">ROD Kopanka</a>*}
+{*            </div>*}
+{*        </div>*}
+{*    </footer>*}
 
     {block scripts}
         <script type="text/javascript" src="https://nette.github.io/resources/js/3/netteForms.min.js"></script>
-        <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
-        <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
         <script type="text/javascript" src="{$basePath}/main.js"></script>
     {/block}
 </body>

@@ -1,0 +1,23 @@
+.sign-in {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 1rem;
+
+  .card {
+    max-width: 700px;
+
+    > .card-image {
+      display: none;
+
+      @include breakpoint("small") {
+        display: block;
+      }
+    }
+  }
+
+  .btn {
+    width: 100%;
+  }
+}
