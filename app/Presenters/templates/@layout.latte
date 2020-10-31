@@ -11,19 +11,26 @@
 </head>
 
 <body class="page-body">
-    <nav n:if="$user->loggedIn" role="navigation">
-        <div class="nav-wrapper container">
-            <a href="#" class="brand-logo"><i class="large material-icons">insert_chart</i>Logo</a>
-            <a href="#" data-target="mobile-demo" class="sidenav-trigger">
-                <i class="material-icons">menu</i>
-            </a>
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a n:href="Home:">Strona Główna</a></li>
-                <li><a n:href="Plot:">Działki</a></li>
-                <li><a n:href="Sign:out">Wyloguj</a></li>
-            </ul>
-        </div>
-    </nav>
+    {if $user->loggedIn}
+        <nav role="navigation">
+            <div class="nav-wrapper container">
+                <a href="#" class="brand-logo"><i class="large material-icons">insert_chart</i>Logo</a>
+                <a href="#" data-target="sidenav" class="sidenav-trigger">
+                    <i class="material-icons">menu</i>
+                </a>
+                <ul class="right hide-on-med-and-down">
+                    <li><a n:href="Home:">Strona Główna</a></li>
+                    <li><a n:href="Plot:">Działki</a></li>
+                    <li><a class="btn btn-small waves-effect waves-light" n:href="Sign:out">Wyloguj</a></li>
+                </ul>
+            </div>
+        </nav>
+        <ul id="sidenav" class="sidenav">
+            <li><a n:href="Home:">Strona Główna</a></li>
+            <li><a n:href="Plot:">Działki</a></li>
+            <li><a n:href="Sign:out">Wyloguj</a></li>
+        </ul>
+    {/if}
 
     <main>
 {*        <div n:foreach="$flashes as $flash" n:class="flash, $flash->type">{$flash->message}</div>*}
